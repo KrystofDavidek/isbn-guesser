@@ -11,14 +11,15 @@ public class Main {
 
     private final static Double THRESHOLD = 0.885;
     private final static boolean IS_SAME = true;
-    private static int MAX_PAIRS = 1;
+    private final static int MAX_PAIRS = 1;
 
     public static void main(String[] args) {
         try {
             List<Guesser> guessers = new ArrayList<Guesser>();
             if (args.length != 0) {
                 guessers = Reader.read(args[0], MAX_PAIRS);
-            } else if (new File("src/data/czbib-isbn-trn-100k.txt").exists()) {
+            } // another else branches only for testing matters
+            else if (new File("src/data/czbib-isbn-trn-100k.txt").exists()) {
                 guessers = Reader.read("src/data/czbib-isbn-trn-100k.txt", MAX_PAIRS);
             } else {
                 try (InputStream is = Main.class.getClassLoader().getResourceAsStream("src/data/czbib-isbn-trn-100k.txt")) {
